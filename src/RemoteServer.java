@@ -6,12 +6,14 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class RemoteServer {
+
     private final int SOCKET_NUMBER = 6666;
     private Robot robot;
     private ServerSocket serverSocket;
     private boolean isShiftPressed;
     private boolean isControlPressed;
     private boolean isAltPressed;
+
     //Test comment
     public RemoteServer(){
         try {
@@ -37,6 +39,7 @@ public class RemoteServer {
 
     private void typeKey(int keyCode){
         robot.keyPress(keyCode);
+
         if(KeyEvent.VK_SHIFT == keyCode){
             if(isShiftPressed) {
                 robot.keyRelease(KeyEvent.VK_SHIFT);
@@ -60,8 +63,7 @@ public class RemoteServer {
 
         }else{
             robot.keyRelease(keyCode);
-
-            if(isShiftPressed) {
+            if(isShiftPressed){
                 robot.keyRelease(KeyEvent.VK_SHIFT);
                 isShiftPressed = false;
             }
